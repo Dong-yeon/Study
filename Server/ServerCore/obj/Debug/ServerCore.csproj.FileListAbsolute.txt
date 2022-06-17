@@ -1,0 +1,7 @@
+D:\Github\Study\Server\ServerCore\bin\Debug\ServerCore.exe.config
+D:\Github\Study\Server\ServerCore\bin\Debug\ServerCore.exe
+D:\Github\Study\Server\ServerCore\bin\Debug\ServerCore.pdb
+D:\Github\Study\Server\ServerCore\obj\Debug\ServerCore.csproj.AssemblyReference.cache
+D:\Github\Study\Server\ServerCore\obj\Debug\ServerCore.csproj.CoreCompileInputs.cache
+D:\Github\Study\Server\ServerCore\obj\Debug\ServerCore.exe
+D:\Github\Study\Server\ServerCore\obj\Debug\ServerCore.pdb
