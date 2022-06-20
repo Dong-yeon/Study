@@ -6,9 +6,11 @@ namespace ServerCore
 {
     class Program
     {
-
         static void Main(string[] args)
         {
+
+            // 5 * 5 배열
+            // [][][][][] [][][][][] [][][][][] [][][][][]
             // 캐시 테스트
             int[,] arr = new int[10000, 10000];
 
