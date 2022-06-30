@@ -4,50 +4,52 @@ using System.Threading.Tasks;
 
 namespace ServerCore
 {
-
     class Program
     {
-        static int _num = 0;
+        // 1. 근성
+        // 2. 양보
+        // 3. 갑질
 
-        // bool
+        // 상호배제
+        // Monitor
+        static object _lock = new object();
+        static SpinLock _lock2 = new SpinLock();
+        // RWLock RederWriteLock
+        static ReaderWriterLockSlim _lock3 = new ReaderWriterLockSlim();
 
-        // int
-        static Mutex _lock = new Mutex();
+        // 직접 만든다.
 
-        static void Thread_1()
+        // [ ] [ ] [ ] [ ] [ ] 
+        class Reward
         {
-            for (int i = 0; i < 100000; i++)
-            {
-                _lock.WaitOne();
-                _lock.WaitOne();
-                _num++;
-                _lock.ReleaseMutex();
-                _lock.ReleaseMutex();
-            }
 
         }
 
-        static void Thread_2()
+        // 99.999999999% 0.0000000001%
+        static Reward GetRewardById(int id)
         {
-            for (int i = 0; i < 100000; i++)
-            {
-                _lock.WaitOne();
-                _num--;
-                _lock.ReleaseMutex();
-            }
+            _lock3.EnterReadLock();
+
+            _lock3.ExitReadLock();
+
+            return null;
+        }
+
+        // 0.000001%
+        void AddReward(Reward reward)
+        {
+            _lock3.EnterReadLock();
+
+            _lock3.ExitReadLock();
+
         }
 
         static void Main(string[] args)
         {
-            Task t1 = new Task(Thread_1);
-            Task t2 = new Task(Thread_2);
+            lock (_lock)
+            {
 
-            t1.Start();
-            t2.Start();
-
-            Task.WaitAll(t1, t2);
-
-            Console.WriteLine(_num);
+            }
         }
     }
 }
