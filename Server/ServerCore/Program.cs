@@ -4,46 +4,36 @@ using System.Threading.Tasks;
 
 namespace ServerCore
 {
-    class Lock
-    {
-        // bool <- 커널
-        AutoResetEvent _available = new AutoResetEvent(true);
-
-        public void Acquire()
-        {
-            _available.WaitOne(); // 입장 시도
-            //_available.Reset(); // bool = false
-        }
-
-        public void Release()
-        {
-            _available.Set(); // flag
-        }
-    }
 
     class Program
     {
         static int _num = 0;
-        static Lock _lock = new Lock();
+
+        // bool
+
+        // int
+        static Mutex _lock = new Mutex();
 
         static void Thread_1()
         {
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
-                _lock.Acquire();
+                _lock.WaitOne();
+                _lock.WaitOne();
                 _num++;
-                _lock.Release();
+                _lock.ReleaseMutex();
+                _lock.ReleaseMutex();
             }
 
         }
 
         static void Thread_2()
         {
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
-                _lock.Acquire();
+                _lock.WaitOne();
                 _num--;
-                _lock.Release();
+                _lock.ReleaseMutex();
             }
         }
 
